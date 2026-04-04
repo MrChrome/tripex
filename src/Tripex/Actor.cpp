@@ -1,6 +1,16 @@
 #include "Platform.h"
 #include "Actor.h"
 #include "error.h"
+#include <cfloat>
+#include <cstring>
+
+#ifndef ZeroMemory
+#define ZeroMemory(p, s) memset((p), 0, (s))
+#endif
+
+#ifndef __assume
+#define __assume(x) do { if (!(x)) __builtin_unreachable(); } while(0)
+#endif
 
 const Point<float> Actor::sprite_tex_coords[4] =
 {

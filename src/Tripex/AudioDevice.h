@@ -5,7 +5,6 @@
 #include "Error.h"
 #include <deque>
 #include <memory>
-#include <mmeapi.h>
 
 class AudioDevice
 {
@@ -15,6 +14,9 @@ public:
 	virtual Error* Destroy() = 0;
 	virtual Error* Tick(float elapsed) = 0;
 };
+
+#ifdef _WIN32
+#include <mmeapi.h>
 
 class WaveOutAudioDevice : public AudioDevice, public AudioSource
 {
@@ -53,3 +55,4 @@ private:
 	Error* WriteNextPackets();
 	Error* CreateWaveOutError(MMRESULT res);
 };
+#endif // _WIN32

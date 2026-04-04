@@ -6,6 +6,7 @@ AudioDevice::~AudioDevice()
 }
 
 ///////////////////////////////////////
+#ifdef _WIN32
 
 WaveOutAudioDevice::WaveOutAudioDevice(std::unique_ptr<AudioSource> in_audio_source)
 	: audio_source(std::move(in_audio_source))
@@ -144,3 +145,5 @@ Error* WaveOutAudioDevice::CreateWaveOutError(MMRESULT res)
 void CALLBACK WaveOutAudioDevice::WaveOutStaticCallback(HWAVEOUT hwo, UINT uMsg, DWORD_PTR dwInstance, DWORD_PTR dwParam1, DWORD_PTR dwParam2)
 {
 }
+
+#endif // _WIN32

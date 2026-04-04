@@ -1,6 +1,6 @@
 #include "Platform.h"
 #include "Misc.h"
-#include <Windows.h>
+#include <chrono>
 
 extern const float PI = 3.1415926535897932384626433832795f;//3.141592f;
 extern const float PI2 = 6.283185307179586476925286766559f;//2.0f * PI;
@@ -29,7 +29,8 @@ const unsigned char g_anBitReverse[ 256 ] =
 
 uint32 GetSystemTimestampMs()
 {
-	return (uint32)GetTickCount64();
+	using namespace std::chrono;
+	return (uint32)duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
 }
 
 /*---------------------------------------------

@@ -3,7 +3,6 @@
 #include "BezierCurve.h"
 #include "AudioData.h"
 #include "effect.h"
-#include <conio.h>
 #include "error.h"
 #include "TextureData.h"
 

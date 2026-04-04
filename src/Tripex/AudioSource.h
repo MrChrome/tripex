@@ -33,6 +33,7 @@ public:
 	virtual void Read(void* read_data, size_t read_size) override;
 
 	static Error* CreateFromWavFile(const char* path, std::unique_ptr<MemoryAudioSource>& out_source);
+	static Error* CreateFromMp3File(const char* path, std::unique_ptr<MemoryAudioSource>& out_source);
 
 private:
 	template<typename T> struct Resample;

@@ -1,6 +1,5 @@
 #include "Platform.h"
 #include "effect.h"
-#include <conio.h>
 #include "Actor.h"
 #include "error.h"
 #include "TextureData.h"

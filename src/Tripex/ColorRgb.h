@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Platform.h"
-#include <wtypes.h>
 #include "Misc.h"
 
 struct WideColorRgb;

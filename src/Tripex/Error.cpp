@@ -1,13 +1,6 @@
 #include "Platform.h"
 #include "error.h"
 
-Error::Error(HRESULT hRes)
-{
-	char sBuf[100];
-	sprintf(sBuf, "Error %08x\n", hRes);
-	message = sBuf;
-}
-
 Error::Error(std::string message)
 {
 	this->message = message;
@@ -36,7 +29,8 @@ std::string Error::GetDescription() const
 				description += ", ";
 			}
 
-			const char* sPos = strrchr(trace[i].first, '\\');
+			const char* sPos = strrchr(trace[i].first, '/');
+			if (sPos == nullptr) sPos = strrchr(trace[i].first, '\\');
 			if (sPos == nullptr)
 			{
 				sPos = trace[i].first;
@@ -67,16 +61,4 @@ Error* TraceErrorImpl(Error* error, const char* file, uint32_t line)
 		error->AddTrace(file, line);
 	}
 	return error;
-}
-
-Error* TraceErrorImpl(HRESULT hRes, const char* file, uint32_t line)
-{
-	if (FAILED(hRes))
-	{
-		return TraceErrorImpl(new Error(hRes), file, line);
-	}
-	else
-	{
-		return nullptr;
-	}
 }

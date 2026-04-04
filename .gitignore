@@ -1,3 +1,4 @@
+# Visual Studio / Windows
 .vs/
 packages/
 /Tripex/
@@ -6,3 +7,11 @@ x64/
 *.plg
 *.suo
 *.vcxproj.user
+
+# CMake build output
+build/
+cmake-build-*/
+
+# macOS
+.DS_Store
+*.dSYM/
