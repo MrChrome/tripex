@@ -276,6 +276,7 @@ Error* RendererOpenGL::BeginFrame()
 	glViewport(0, 0, screen_width, screen_height);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClearDepth(1.0);
+	glDepthMask(GL_TRUE); // ensure depth writes are enabled so the clear actually takes effect
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glUseProgram(program);

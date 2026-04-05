@@ -432,6 +432,16 @@ Error* Tripex::Render(AudioSource& audio_source)
 		}
 	}
 
+	// Draw effect name in bottom-left corner
+	{
+		const char* effect_name = enabled_effects[effect_idx]->name.c_str();
+		int name_width = tef.GetWidth(effect_name);
+		int name_x = 10;
+		int name_y = renderer->GetHeight() - 25;
+		overlay_background.AddSprite(Point<int>(name_x - 5, name_y - 5), Rect<int>(0, 0, name_width + 10, 20), overlay_back_mult);
+		tef.Draw(overlay_text, effect_name, Point<int>(name_x, name_y), ColorRgb::Grey(192.0f));
+	}
+
 	// Draw the overlay background
 	{
 		RenderState render_state;
